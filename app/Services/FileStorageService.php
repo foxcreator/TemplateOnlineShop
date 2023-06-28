@@ -10,7 +10,6 @@ use Illuminate\Support\Str;
 
 class FileStorageService implements FileStorageServiceContract
 {
-
     public static function upload(string|UploadedFile $file)
     {
         if (is_string($file)){

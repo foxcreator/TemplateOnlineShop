@@ -15,6 +15,9 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                        <div class="container text-center">
+                            <a href="{{ route('create') }}">Add Product</a>
+                        </div>
                 </div>
             </div>
         </div>

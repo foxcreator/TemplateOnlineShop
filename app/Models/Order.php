@@ -14,7 +14,8 @@ class Order extends Model
 
     protected $fillable = [
         'name',
-        'phone'
+        'phone',
+        'productNames'
     ];
 
     public function products()
@@ -29,26 +30,6 @@ class Order extends Model
             $sum +=$product->getPriceForCount();
         }
         return $sum;
-    }
-
-    public function saveOrder($name, $phone, $region, $city, $novaposhta)
-    {
-        if ($this->status == 0){
-            $this->name = $name;
-            $this->phone = $phone;
-            $this->region = $region;
-            $this->city = $city;
-            $this->novaposhta = $novaposhta;
-            $this->status = 1;
-            $this->productNames = $this->getProductNames();
-            $this->save();
-
-            session()->forget('orderId');
-
-            return true;
-        } else{
-            return false;
-        }
     }
 
     private function getProductNames()

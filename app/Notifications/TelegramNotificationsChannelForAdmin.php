@@ -19,10 +19,6 @@ class TelegramNotificationsChannelForAdmin extends Notification
 
     public $name;
     public $phone;
-    public $region;
-    public $city;
-    public $novaposhta;
-    private $order;
 
     /**
      * Create a new notification instance.
@@ -33,13 +29,10 @@ class TelegramNotificationsChannelForAdmin extends Notification
         // Отправка уведомления через Telegram к вам
     }
 
-    public function __construct($name, $phone, $region, $city, $novaposhta,$productNames)
+    public function __construct($name, $phone, $productNames)
     {
         $this->name = $name;
         $this->phone = $phone;
-        $this->region = $region;
-        $this->city = $city;
-        $this->novaposhta = $novaposhta;
         $this->productNames = $productNames;
     }
     /**
@@ -60,9 +53,6 @@ class TelegramNotificationsChannelForAdmin extends Notification
         $message = "*New Order Received*\n\n";
         $message .= "*Name:* {$this->name}\n";
         $message .= "*Phone:* {$this->phone}\n";
-        $message .= "*Region:* {$this->region}\n";
-        $message .= "*City:* {$this->city}\n";
-        $message .= "*Nova Poshta:* {$this->novaposhta}\n";
         $message .= "*Product Names:* {$productNames}\n";
         $message .= "\n";
 

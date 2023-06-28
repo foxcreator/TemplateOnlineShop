@@ -26,30 +26,28 @@ Route::get('/register', function () {
 
 
 
-Route::get('/','App\Http\Controllers\MainController@index')->name('index');
-Route::get('/contacts','App\Http\Controllers\MainController@contacts')->name('contacts');
-Route::get('/aboutus','App\Http\Controllers\MainController@aboutus')->name('aboutus');
+Route::get('/',[App\Http\Controllers\MainController::class, 'index'])->name('index');
+Route::get('/contacts',[App\Http\Controllers\MainController::class, 'contacts'])->name('contacts');
+Route::get('/aboutus',[App\Http\Controllers\MainController::class, 'aboutus'])->name('aboutus');
 
-Route::get('/catalog','App\Http\Controllers\MainController@show')->name('show');
-Route::get('/catalog/{code}','App\Http\Controllers\MainController@shop')->name('shop');
+Route::get('/catalog',[App\Http\Controllers\MainController::class, 'show'])->name('show');
+Route::get('/catalog/{code}',[App\Http\Controllers\MainController::class, 'shop'])->name('shop');
 
-Route::get('/basket','App\Http\Controllers\BasketController@basket')->name('basket');
-Route::get('/basket/place','App\Http\Controllers\BasketController@basketPlace')->name('basket-place');
-Route::post('/basket/add/{id}', 'App\Http\Controllers\BasketController@basketAdd')->name('basket-add');
-Route::post('/basket/remove/{id}', 'App\Http\Controllers\BasketController@basketRemove')->name('basket-remove');
+Route::get('/check', [\App\Http\Controllers\CartController::class, 'check'])->name('check');
+//Маршруты корзины: Все товары в корзине, добавление, удаление одного, сохранение в БД, очистка корзины.
+Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart');
+Route::post('/cart/add/{product}', [\App\Http\Controllers\CartController::class, 'add'])->name('cart.add');
+Route::post('/cart/remove/{product}', [\App\Http\Controllers\CartController::class, 'remove'])->name('cart.remove');
+Route::post('/cart/checkout', [\App\Http\Controllers\CartController::class, 'checkout'])->name('cart.checkout');
+Route::post('/cart/clear-cart', [\App\Http\Controllers\CartController::class, 'clear'])->name('cart.clear');
 
-Route::post('/basket/place','App\Http\Controllers\BasketController@basketConfirm')->name('basket-confirm');
-
-Route::get('/{category}/{id}','App\Http\Controllers\MainController@product')->name('product');
-//Route::get('/basket', [\App\Http\Controllers\BasketController::class, 'basket']);
-//Route::get('/basket/add/{id}', [\App\Http\Controllers\BasketController::class, 'basketAdd']);
-
-
-//Notification::route('telegram', '375733401')
-//    ->notify(new TelegramNotificationsChannelForAdmin);
+Route::get('/{category}/{id}',[App\Http\Controllers\MainController::class, 'product'])->name('product');
 
 
 Auth::routes();
 
+Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::get('/create', [\App\Http\Controllers\Admin\ProductController::class, 'create'])->name('create');
 Route::post('/store', [\App\Http\Controllers\Admin\ProductController::class, 'store'])->name('store');
+

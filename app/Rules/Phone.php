@@ -26,6 +26,6 @@ class Phone implements ValidationRule
 
     public function message()
     {
-        return 'Incorrect format need "+XX(XXX)XXXXXXX"';
+        return 'Невірний формат. "+XX(XXX)XXXXXXX"';
     }
 }

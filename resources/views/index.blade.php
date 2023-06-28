@@ -72,15 +72,15 @@
             <div class="row">
                 @foreach($products as $product)
                 <div class="col-sm-6 col-lg-4 text-center item product-items mb-4">
-                    <a href="shop-single.html"> <img src="{{ $product->imageUrl }}" width="300" alt="Image"></a>
-                    <h3 class="text-dark"><a href="shop-single.html">{{ $product->name }}</a></h3>
+                    <a href="{{ route('product', [$product->category->id, $product->id]) }}"> <img src="{{ $product->imageUrl }}" width="300" alt="Image"></a>
+                    <h3 class="text-dark"><a href="{{ route('product', [$product->category->id, $product->id]) }}">{{ $product->name }}</a></h3>
                     <p class="price text-bg-primary">{{ $product->price }} грн</p>
                 </div>
                 @endforeach
             </div>
             <div class="row mt-5">
                 <div class="col-12 text-center">
-                    <a href="shop.html" class="btn btn-primary px-4 py-3">View All Products</a>
+                    <a href="shop.html" class="btn btn-primary px-4 py-3">Все товары</a>
                 </div>
             </div>
         </div>
@@ -91,7 +91,7 @@
         <div class="container">
             <div class="row">
                 <div class="title-section text-center col-12">
-                    <h2 class="text-uppercase">New Products</h2>
+                    <h2 class="text-uppercase">Новые продукты</h2>
                 </div>
             </div>
             <div class="row">
@@ -99,9 +99,9 @@
                     <div class="nonloop-block-3 owl-carousel">
                         @foreach($products as $product)
                             <div class="text-center item mb-4">
-                                <a href="shop-single.html"> <img src="images/product_03.png" alt="Image"></a>
-                                <h3 class="text-dark"><a href="shop-single.html">Umcka Cold Care</a></h3>
-                                <p class="price">$120.00</p>
+                                <a href="{{ route('product', [$product->category->id, $product->id]) }}"> <img src="{{ $product->imageUrl }}" width="300" alt="Image"></a>
+                                <h3 class="text-dark"><a href="{{ route('product', [$product->category->id, $product->id]) }}">{{ $product->name }}</a></h3>
+                                <p class="price text-bg-primary">{{ $product->price }} грн</p>
                             </div>
                         @endforeach
 

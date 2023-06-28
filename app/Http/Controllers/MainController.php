@@ -18,8 +18,9 @@ class MainController extends Controller
     public function product($category, $id)
     {
         $product = Product::findOrFail($id);
+        $categories = Category::all();
 
-        return view('   product', compact('product'));
+        return view('   product', compact('product', 'categories'));
     }
 
     public function shop($code)
@@ -39,7 +40,6 @@ class MainController extends Controller
         $categoryName = $category->name;
         return view('shop', compact('categories', 'category', 'products', 'categoryName'));
     }
-
 
     public function contacts()
     {

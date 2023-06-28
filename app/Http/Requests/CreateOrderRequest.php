@@ -21,16 +21,9 @@ class   CreateOrderRequest extends FormRequest
         return [
           'name.min' => 'Ім\'я та прізвище має бути понад 6 символів',
           'phone' => 'Невірний формат',
-          'region.min' => 'Поле "область" має містити понад 2 символи',
-          'city.min' => 'Поле "місто" має містити понад 2 символи',
-          'novaposhta' => 'Вкажіть відділення нової пошти',
         ];
     }
-        //$request->name,
-        //$request->phone,
-        //$request->region,
-        //$request->city,
-        //$request->novaposhta,
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -41,10 +34,6 @@ class   CreateOrderRequest extends FormRequest
         return [
             'name' => ['required', 'min:6', 'max:50'],
             'phone' => ['required', 'string', 'max:15', new Phone],
-            'region' => ['required', 'string', 'min:2'],
-            'city' => ['required', 'string', 'min:2'],
-            'novaposhta' => ['required', 'string', 'min:1'],
-
         ];
     }
 }

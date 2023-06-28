@@ -18,8 +18,14 @@
             <div class="row">
                 @foreach($products as $product)
                 <div class="col-sm-6 col-lg-4 text-center item product-items mb-4">
-                    <a href="shop-single.html"> <img src="{{ $product->imageUrl }}" width="300" alt="Image"></a>
-                    <h3 class="text-dark"><a href="shop-single.html">{{ $product->name }}</a></h3>
+                    <a href="{{ route('product', [$product->category->id, $product->id]) }}">
+                        <img src="{{ $product->imageUrl }}" width="300" alt="Image">
+                    </a>
+                    <h3 class="text-dark">
+                        <a href="{{ route('product', [$product->category->id, $product->id]) }}">
+                            {{ $product->name }}
+                        </a>
+                    </h3>
                     <p class="price">{{ $product->price }} грн.</p>
                 </div>
                 @endforeach

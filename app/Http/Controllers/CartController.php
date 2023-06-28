@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateOrderRequest;
 use App\Models\Cart;
 use App\Models\Product;
-use App\Models\User;
 use App\Services\CartService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use function redirect;
+use function session;
+use function view;
 
 class CartController extends Controller
 {
@@ -24,7 +26,7 @@ class CartController extends Controller
         $cart = session()->get('cart', []);
         $total = $this->cartService->getTotal();
 
-        return view('cart.index', compact('cart', 'total'));
+        return view('cart', compact('cart', 'total'));
     }
 
     public function add(Request $request, Product $product)
@@ -34,11 +36,12 @@ class CartController extends Controller
         return redirect()->back();
     }
 
-    public function checkout()
+    public function checkout(CreateOrderRequest $request)
     {
-        $cartId = $this->cartService->checkoutProductToDb();
+        $data = $request->all();
+        $cartId = $this->cartService->checkoutProductToDb($data);
 
-        return redirect()->route('home')->with('status', "Чек #$cartId закрыт.");
+        return redirect()->route('index')->with('success', "Менеджер вже оброблює ваш заказ.");
     }
 
     public function remove(Request $request, Product $product)
@@ -52,7 +55,15 @@ class CartController extends Controller
     {
         session()->forget('cart');
 
-        return redirect()->route('home')->with('status', 'Корзина успешно очищена');
+        return redirect()->route('index')->with('status', 'Корзина успешно очищена');
+    }
+
+
+    public function check()
+    {
+        $cart = session()->get('cart', []);
+        $total = $this->cartService->getTotal();
+        return view('checkout', compact('total', 'cart'));
     }
 
 }

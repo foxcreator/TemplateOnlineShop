@@ -1,13 +1,18 @@
+<?php $categories = \App\Models\Category::all() ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Pharma &mdash; Colorlib Template</title>
+    <title>Майстер Покриття</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <link rel="icon" href="{{ asset('Images/LogoMP.png') }}" type="image/png" sizes="32x32">
+
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('fonts/icomoon/style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
@@ -48,16 +53,15 @@
                         <ul class="site-menu js-clone-nav d-none d-lg-block">
                             <li class="active"><a href="{{ route('index') }}">Головна</a></li>
                             <li class="has-children">
-                                <a href="#">Продукти</a>
+                                <a href="#">Каталог</a>
                                 <ul class="dropdown">
-                                    <li><a href="#">Всі продукти</a></li>
                                     @foreach($categories as $category)
                                     <li><a href="{{ route('shop', $category->id) }}">{{ $category->name }}</a></li>
                                     @endforeach
                                 </ul>
                             </li>
-                            <li><a href="about.html">Про компанію</a></li>
-                            <li><a href="contact.html">Контакти</a></li>
+                            <li><a href="{{ route('aboutus') }}">Про компанію</a></li>
+                            <li><a href="{{ route('contacts') }}">Контакти</a></li>
                             @auth()
                             <li>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
@@ -73,9 +77,11 @@
                 </div>
                 <div class="icons">
                     <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
-                    <a href="cart.html" class="icons-btn d-inline-block bag">
+                    <a href="{{ route('cart') }}" class="icons-btn d-inline-block bag">
                         <span class="icon-shopping-bag"></span>
-                        <span class="number">2</span>
+                        @if(session()->get('cart', []))
+                        <span class="number">{{ count(session()->get('cart', [])) }}</span>
+                        @endif
                     </a>
                     <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span
                             class="icon-menu"></span></a>
@@ -92,19 +98,18 @@
                 <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
 
                     <div class="block-7">
-                        <h3 class="footer-heading mb-4">About Us</h3>
+                        <h3 class="footer-heading mb-4">О компании</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quae reiciendis distinctio voluptates
                             sed dolorum excepturi iure eaque, aut unde.</p>
                     </div>
 
                 </div>
                 <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
-                    <h3 class="footer-heading mb-4">Quick Links</h3>
+                    <h3 class="footer-heading mb-4">Категории</h3>
                     <ul class="list-unstyled">
-                        <li><a href="#">Supplements</a></li>
-                        <li><a href="#">Vitamins</a></li>
-                        <li><a href="#">Diet &amp; Nutrition</a></li>
-                        <li><a href="#">Tea &amp; Coffee</a></li>
+                        @foreach($categories as $category)
+                            <li><a href="{{ route('shop', $category->id) }}">{{ $category->name }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
 
@@ -112,9 +117,9 @@
                     <div class="block-5 mb-5">
                         <h3 class="footer-heading mb-4">Contact Info</h3>
                         <ul class="list-unstyled">
-                            <li class="address">203 Fake St. Mountain View, San Francisco, California, USA</li>
-                            <li class="phone"><a href="tel://23923929210">+2 392 3929 210</a></li>
-                            <li class="email">emailaddress@domain.com</li>
+                            <li class="address">Украина, г. Киев ул Киевская 5 офис 200</li>
+                            <li class="phone"><a href="tel://0635555555">+38 063 054 03 02</a></li>
+                            <li class="email">email@test.com</li>
                         </ul>
                     </div>
 
@@ -145,6 +150,9 @@
 <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
 <script src="{{ asset('js/aos.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
 
 
 </body>
