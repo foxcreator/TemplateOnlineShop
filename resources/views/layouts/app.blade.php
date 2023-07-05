@@ -31,16 +31,6 @@
 
 
     <div class="site-navbar py-2">
-
-        <div class="search-wrap">
-            <div class="container">
-                <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
-                <form action="#" method="post">
-                    <input type="text" class="form-control" placeholder="Search keyword and hit enter...">
-                </form>
-            </div>
-        </div>
-
         <div class="container">
             <div class="d-flex align-items-center justify-content-between">
                 <div class="logo">
@@ -98,14 +88,13 @@
                 <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
 
                     <div class="block-7">
-                        <h3 class="footer-heading mb-4">О компании</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quae reiciendis distinctio voluptates
-                            sed dolorum excepturi iure eaque, aut unde.</p>
+                        <h3 class="footer-heading mb-4">Про компанію</h3>
+                        <p>Ми - провідний постачальник якісних покриттів для підлоги з багаторічним досвідом. Наша команда створює незабутні та естетично привабливі підлоги, забезпечуючи найкращі послуги на ринку.</p>
                     </div>
 
                 </div>
                 <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
-                    <h3 class="footer-heading mb-4">Категории</h3>
+                    <h3 class="footer-heading mb-4">Категорії</h3>
                     <ul class="list-unstyled">
                         @foreach($categories as $category)
                             <li><a href="{{ route('shop', $category->id) }}">{{ $category->name }}</a></li>
@@ -115,11 +104,11 @@
 
                 <div class="col-md-6 col-lg-3">
                     <div class="block-5 mb-5">
-                        <h3 class="footer-heading mb-4">Contact Info</h3>
+                        <h3 class="footer-heading mb-4">Контактна інформація</h3>
                         <ul class="list-unstyled">
-                            <li class="address">Украина, г. Киев ул Киевская 5 офис 200</li>
-                            <li class="phone"><a href="tel://0635555555">+38 063 054 03 02</a></li>
-                            <li class="email">email@test.com</li>
+                            <li class="address">Україна, м. Дніпро вул. Київська 5 офіс 200</li>
+                            <li class="phone"><a href="tel://0687904095">+380 (68) 790 40 95</a></li>
+                            <li class="email">Spectrtorg@gmail.com</li>
                         </ul>
                     </div>
 

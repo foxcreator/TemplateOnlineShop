@@ -5,7 +5,7 @@
 @section('content')
 
 
-    <div class="site-blocks-cover inner-page" style="background-image: url('images/floor_2.webp');">
+    <div class="site-blocks-cover inner-page" style="background-image: url({{asset('images/floor_2.webp')}});">
         <div class="container">
             <div class="row">
                 <div class="col-lg-7 mx-auto align-self-center">

@@ -7,15 +7,8 @@
 
     <main>
         <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="productNav">Контакты</div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
             <div class="row d-flex">
-                <p style="width: 50%;"><h3>ТОВ «МІНУ-ТЕХ»</h3>
+                <p style="width: 50%;"><h3>ТОВ «...»</h3>
                 <br>
                 <br>
                 <br>
@@ -27,13 +20,13 @@
                     <br>
                     Телефон
                     <br>
-                    380732118995
+                    <a class="text-warning" href="tel://0687904095">+380 (68) 790 40 95</a>
                     <br>
                     <br>
 
 
                     Ваші пропозиції чекаємо на наш e-mail:<br>
-                    techno-kit@ukr.net</p></p>
+                    Spectrtorg@gmail.com</p></p>
             </div>
         </div>
     </main>

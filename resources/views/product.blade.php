@@ -14,25 +14,18 @@
                 </div>
                 <div class="col-md-6">
                     <h2 class="text-black pb-5">{{ $product->name }}</h2>
-{{--                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus--}}
-{{--                        soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas,--}}
-{{--                        distinctio, aperiam, ratione dolore.</p>--}}
+                    <p><strong class="text-warning h3">{{ $product->price }} грн.</strong></p>
 
-
-                    <p><strong class="text-primary h4">{{ $product->price }} грн.</strong></p>
-
-
-
-                    <form action="{{ route('cart.add', $product->id) }}" method="POST" class="mb-5">
+                    <form action="{{ route('cart.add', $product->id) }}" method="POST" class="mb-5 mt-5">
                         @csrf
                         <div class="input-group mb-3" style="max-width: 220px;">
                             <div class="input-group-prepend">
-                                <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+                                <button class="btn btn-outline-warning js-btn-minus" type="button">&minus;</button>
                             </div>
-                            <input type="text" name="quantity" class="form-control text-center" value="1" placeholder=""
+                            <input type="text" name="quantity" class="form-control text-center border-warning" value="1" placeholder=""
                                    aria-label="Example text with button addon" aria-describedby="button-addon1">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+                                <button class="btn btn-outline-warning js-btn-plus" type="button">&plus;</button>
                             </div>
                         </div>
                         <p><button type="submit" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Додати у кошик</button></p>

@@ -6,7 +6,7 @@
     @if(session()->has('success'))
         <p class="alert alert-success">{{ session()->get('success') }}</p>
     @endif
-    <div class="site-blocks-cover" style="background-image: url('images/floor.jpeg');">
+    <div class="site-blocks-cover" style="background-image: url({{ asset('images/floor.jpeg') }});">
         <div class="container">
             <div class="row">
                 <div class="col-lg-7 mx-auto order-lg-2 align-self-center">
@@ -14,7 +14,7 @@
                         <h2 class="sub-title">Якісні покриття для вашого будинку та офісу.</h2>
                         <h1>Підлога, яка вас зачарує!</h1>
                         <p>
-                            <a href="#" class="btn btn-primary px-5 py-3">Придбати</a>
+                            <a href="{{ route('shop', 1) }}" class="btn btn-primary px-5 py-3">Придбати</a>
                         </p>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                 <div class="col-sm-6 col-lg-4 text-center item product-items mb-4">
                     <a href="{{ route('product', [$product->category->id, $product->id]) }}"> <img src="{{ $product->imageUrl }}" width="300" alt="Image"></a>
                     <h3 class="text-dark"><a href="{{ route('product', [$product->category->id, $product->id]) }}">{{ $product->name }}</a></h3>
-                    <p class="price text-bg-primary">{{ $product->price }} грн</p>
+                    <p class="price">{{ $product->price }} грн</p>
                 </div>
                 @endforeach
             </div>
@@ -101,7 +101,7 @@
                             <div class="text-center item mb-4">
                                 <a href="{{ route('product', [$product->category->id, $product->id]) }}"> <img src="{{ $product->imageUrl }}" width="300" alt="Image"></a>
                                 <h3 class="text-dark"><a href="{{ route('product', [$product->category->id, $product->id]) }}">{{ $product->name }}</a></h3>
-                                <p class="price text-bg-primary">{{ $product->price }} грн</p>
+                                <p class="price">{{ $product->price }} грн</p>
                             </div>
                         @endforeach
 

@@ -19,8 +19,10 @@ class   CreateOrderRequest extends FormRequest
     public function messages()
     {
         return [
-          'name.min' => 'Ім\'я та прізвище має бути понад 6 символів',
-          'phone' => 'Невірний формат',
+            'name.required' => 'Введить Ім\'я та прізвище',
+            'name.min' => 'Ім\'я та прізвище має бути понад 6 символів',
+            'phone' => 'Невірний формат',
+            'phone.required' => 'Введить номер телефона',
         ];
     }
 
